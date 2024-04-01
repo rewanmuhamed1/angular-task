@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <span routerLink="/" class="logo-link">Maids</span>
+    <div class="menu-container">
+      <button mat-button  routerLink="/">UserList</button>
+    </div>
+    
+    <div class="search-container">
+      <input  type="text" class="search-input" placeholder="Search by id " #searchid (keyup.enter)="search(+searchid.value)">
+     <!--  <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        
+        <input matInput type="text" #searchid (keyup.enter)="search(+searchid.value)" placeholder="Enter your search term">
+      </mat-form-field> -->
+    </div>
+  </mat-toolbar>

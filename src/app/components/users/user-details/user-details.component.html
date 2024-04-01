@@ -1,0 +1,25 @@
+<div *ngIf="user?.data; else spinner">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"  [style.background-image]="'url('+ user?.data?.avatar +')'" ></div>
+        <mat-card-title>{{user?.data?.first_name + " "+ user?.data?.last_name}}</mat-card-title>
+       
+      </mat-card-header>
+      <img mat-card-image style="width: 200px;" [src]="user?.data?.avatar" [alt]="user?.data?.last_name">
+      <mat-card-content>
+        <p>
+          Email : {{user?.data?.email}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="back()">Back</button>
+       
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <ng-template #spinner>
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-template>
+
+
+

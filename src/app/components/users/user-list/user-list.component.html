@@ -1,0 +1,26 @@
+<div *ngIf="users; else spinner">
+    <div class="users-list">
+        <mat-list>
+            <div *ngFor="let user of users.data ">
+                <mat-list-item routerLink="/userdetail/{{user.id}}">
+                    <img matListItemAvatar [src]="user.avatar" [alt]="user.last_name">
+                    <h3 matListItemTitle>{{user.first_name +" "+ user.last_name}}</h3>
+                    <p matListItemLine>
+                        <span>{{user.email}}</span>
+            
+                    </p>
+                </mat-list-item>
+            </div>
+           
+           
+        </mat-list>
+        <mat-paginator class="user-list-paginate" [length]="users.total" [pageSize]="users.per_page" [showFirstLastButtons]="true"
+        [pageIndex]="currentPage" (page)="handlePageEvent($event)">
+        </mat-paginator>
+    </div>
+  </div>
+  <ng-template #spinner >
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-template>
+
+

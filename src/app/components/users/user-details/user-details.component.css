@@ -1,0 +1,15 @@
+.example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+  .mat-mdc-card{
+    justify-content: space-between;
+    align-items: center;
+  }
+  .example-card{
+    margin: auto;
+    margin-top: 20px;
+  }
