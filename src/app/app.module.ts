@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,12 @@ import {MatCardModule} from '@angular/material/card';
 import { SearchComponent } from './components/search/search.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { userReducer } from './store/user.reducers';
+
+import { EffectsModule } from '@ngrx/effects';
+import { userEffect } from './store/user.effect';
+
+
 
 @NgModule({
   declarations: [
@@ -42,7 +50,9 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StoreModule.forRoot({ users : userReducer }),
+    EffectsModule.forRoot(userEffect),
   ],
   providers: [],
   bootstrap: [AppComponent]

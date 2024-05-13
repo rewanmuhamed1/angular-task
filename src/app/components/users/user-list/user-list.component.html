@@ -1,7 +1,7 @@
-<div *ngIf="users; else spinner">
+<div *ngIf="!(loading$ | async) && users; else spinner">
     <div class="users-list">
         <mat-list>
-            <div *ngFor="let user of users.data ">
+            <div *ngFor="let user of users ">
                 <mat-list-item routerLink="/userdetail/{{user.id}}">
                     <img matListItemAvatar [src]="user.avatar" [alt]="user.last_name">
                     <h3 matListItemTitle>{{user.first_name +" "+ user.last_name}}</h3>
@@ -14,7 +14,7 @@
            
            
         </mat-list>
-        <mat-paginator class="user-list-paginate" [length]="users.total" [pageSize]="users.per_page" [showFirstLastButtons]="true"
+        <mat-paginator class="user-list-paginate" [length]="totalPage" [pageSize]="per_page" [showFirstLastButtons]="true"
         [pageIndex]="currentPage" (page)="handlePageEvent($event)">
         </mat-paginator>
     </div>

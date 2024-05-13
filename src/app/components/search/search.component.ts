@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
-  user: User | undefined;
+  user: User | any;
   id: number = 0;
   idNotFound: boolean = false;
   private gueryParamSubscribe: Subscription | undefined;

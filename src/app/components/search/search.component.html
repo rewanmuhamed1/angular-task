@@ -1,11 +1,11 @@
-<div *ngIf="user?.data ; else notfound">
+<div *ngIf="user ; else notfound">
     <div class="users-list">
         <mat-list>
-            <mat-list-item routerLink="/userdetail/{{user?.data?.id}}">
-                <img matListItemAvatar [src]="user?.data?.avatar" [alt]="user?.data?.last_name">
-                <h3 matListItemTitle>{{user?.data?.first_name +" " +user?.data?.last_name}}</h3>
+            <mat-list-item routerLink="/userdetail/{{user.data?.id}}">
+                <img matListItemAvatar [src]="user.data?.avatar" [alt]="user.data?.last_name">
+                <h3 matListItemTitle>{{user.data?.first_name +" " +user.data?.last_name}}</h3>
                 <p matListItemLine>
-                    <span>{{user?.data?.email}}</span>
+                    <span>{{user.data?.email}}</span>
         
                 </p>
             </mat-list-item>
