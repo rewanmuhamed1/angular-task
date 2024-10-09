@@ -7,11 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { PaginatorComponent } from './components/paginator/paginator.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,11 +20,10 @@ import {MatCardModule} from '@angular/material/card';
 import { SearchComponent } from './components/search/search.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { userReducer } from './store/user.reducers';
-
+import { userReducer } from './store/user.reducers'; 
 import { EffectsModule } from '@ngrx/effects';
 import { userEffect } from './store/user.effect';
-
+import { CachingInterceptor } from './http-interceptors/http-interceptor';
 
 
 @NgModule({
@@ -33,7 +31,7 @@ import { userEffect } from './store/user.effect';
     AppComponent,
     HomeComponent,
     UserListComponent,
-    PaginatorComponent,
+ 
     NavbarComponent,
     UserDetailsComponent,
     SearchComponent,
@@ -54,7 +52,14 @@ import { userEffect } from './store/user.effect';
     StoreModule.forRoot({ users : userReducer }),
     EffectsModule.forRoot(userEffect),
   ],
-  providers: [],
+  providers: [
+
+    {
+       provide: HTTP_INTERCEPTORS,
+         useClass: CachingInterceptor,
+         multi: true,
+       },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

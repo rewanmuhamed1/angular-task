@@ -14,9 +14,9 @@ export class userEffect {
 
   constructor(private actions$: Actions, private userService: UserService) { }
 
-  loadUsers$: Observable<Action> = createEffect(() => 
+   loadUsers$: Observable<Action> = createEffect(() => 
     this.actions$.pipe(
-      ofType(UserActions.LoadUsers),
+      ofType(UserActions.LoadUsers), // type of action 
       switchMap((action) => { // Use switchMap to switch to a new observable
         const page = action.page; // Extract the page number from the action payload
         return this.userService.getUsers(page).pipe( // Fetch users based on the page number
@@ -25,6 +25,6 @@ export class userEffect {
         );
       })
     )
-  );
+  ); 
 
 }

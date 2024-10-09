@@ -10,9 +10,9 @@ export interface UserState {
     loading: boolean;
     error: string;
 }
-export interface AppState extends fromRoot.AppState {
+/* export interface AppState extends fromRoot.AppState {
     allData: UserState
-}
+} */
 export const initialState: UserState = {
     allData: {
         page: 0,
